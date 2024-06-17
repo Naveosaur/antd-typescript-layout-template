@@ -4,7 +4,11 @@ import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import React from "react";
 
-const MainPageLayout = ({ children }) => {
+type PropsTypes = {
+  readonly children: React.ReactNode;
+};
+
+const MainPageLayout = ({ children }: PropsTypes) => {
   return (
     <Layout className="">
       <Navbar />

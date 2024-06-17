@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 const FormLogin = () => {
   const router = useRouter();
   // On Finish Form
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     console.log("Success:", values);
     router.push("/dashboard");
   };
