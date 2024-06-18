@@ -1,6 +1,6 @@
 import axios from "axios";
-import { decrypt } from "./Cryptograph";
 import Cookies from "js-cookie";
+import { decrypt } from "./Cryptograph";
 import { useRouter } from "next/router";
 
 const baseURL = process.env.REACT_APP_API_URL;
@@ -16,6 +16,7 @@ const http = axios.create({
 http.interceptors.request.use(
   async (config) => {
     let token = Cookies.get("token") ? decrypt(Cookies.get("token")) : "";
+
     // return config;
     config.headers["Authorization"] = "bearer " + token;
     return config;

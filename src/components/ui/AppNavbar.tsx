@@ -9,7 +9,7 @@ const AppNavbar = () => {
   return (
     <Header className="!bg-primary flex flex-row justify-between items-center">
       <Link href="/">
-        <Image src="/fps-icon-white.svg" alt="logo" width={100} height={50} />
+        <Image src="/fps-icon-white.svg" alt="logo" width={100} height={42} />
       </Link>
       <div className="flex flex-row items-center gap-5 text-2xl text-white">
         <BellOutlined />
