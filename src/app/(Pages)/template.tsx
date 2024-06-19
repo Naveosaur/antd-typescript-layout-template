@@ -14,8 +14,10 @@ const MainPageLayout = ({ children }: PropsTypes) => {
       <Navbar />
       <Layout hasSider className="">
         <Sidebar />
-        <Layout className="">
-          <Content style={{ padding: "16px", minHeight: "calc(100vh - 64px)" }}>{children}</Content>
+        <Layout className="!bg-gray-300">
+          <Content style={{ minHeight: "calc(100vh - 64px)" }} className="m-8 bg-white rounded-lg p-5">
+            {children}
+          </Content>
         </Layout>
       </Layout>
     </Layout>
