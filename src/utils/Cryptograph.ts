@@ -1,17 +1,21 @@
-import { AES, enc } from "crypto-js";
+import crypto from "crypto";
 
-export const Securitykey = "fpsreconcile2024";
+const algorithm = "aes-256-cbc";
+const key = crypto.randomBytes(32);
 
-export const decrypt = (data: string | undefined) => {
-  if (data) {
-    const bytes = AES.decrypt(data, Securitykey);
-    const decryptedData = bytes.toString(enc.Utf8);
-    return decryptedData;
-  } else {
-    return null;
-  }
-};
+export function encrypt(text: string): string {
+  const iv = crypto.randomBytes(16); // Generate a new IV for each encryption
+  const cipher = crypto.createCipheriv(algorithm, key, iv);
+  let encrypted = cipher.update(text, "utf8", "hex");
+  encrypted += cipher.final("hex");
+  return `${iv.toString("hex")}:${encrypted}`; // Include the IV with the encrypted text
+}
 
-export const encrypt = (data: string) => {
-  return AES.encrypt(data, Securitykey).toString();
-};
+export function decrypt(encryptedText: string): string {
+  const [ivHex, encrypted] = encryptedText.split(":");
+  const iv = Buffer.from(ivHex, "hex");
+  const decipher = crypto.createDecipheriv(algorithm, key, iv);
+  let decrypted = decipher.update(encrypted, "hex", "utf8");
+  decrypted += decipher.final("utf8");
+  return decrypted;
+}

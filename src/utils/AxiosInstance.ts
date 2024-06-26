@@ -1,10 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { decrypt } from "./Cryptograph";
-import { useRouter } from "next/router";
 
-const baseURL = process.env.REACT_APP_API_URL;
-const router = useRouter();
+const baseURL = "https://klinik.4netps.co.id/hospital-endpoint/";
 
 const http = axios.create({
   baseURL,
@@ -15,10 +13,13 @@ const http = axios.create({
 
 http.interceptors.request.use(
   async (config) => {
-    let token = Cookies.get("token") ? decrypt(Cookies.get("token")) : "";
+    let token = Cookies.get("token");
+    if (token) {
+      const decryptedToken = decrypt(token);
+      config.headers["Authorization"] = "Bearer " + decryptedToken;
+      return config;
+    }
 
-    // return config;
-    config.headers["Authorization"] = "bearer " + token;
     return config;
   },
   (error) => {
@@ -26,15 +27,16 @@ http.interceptors.request.use(
   }
 );
 
-http.interceptors.response.use(undefined, async (error) => {
-  const originalRequest = error.config;
-  if (error.response.status === 401 && !originalRequest._retry) {
-    Cookies.remove("token");
-    Cookies.remove("user");
-    return router.push("/login");
-  } else {
-    return Promise.reject(new Error(error));
-  }
-});
+// http.interceptors.response.use(undefined, async (error) => {
+//   const originalRequest = error.config;
+//   console.log(error);
+
+//   if (error.response.status === 401 && !originalRequest._retry) {
+//     Cookies.remove("token");
+//     Cookies.remove("user");
+//   } else {
+//     return Promise.reject(new Error(error));
+//   }
+// });
 
 export default http;
