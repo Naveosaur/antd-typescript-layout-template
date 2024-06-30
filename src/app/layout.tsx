@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+// import ReduxProvider from "@/lib/redux/ReduxProvider";
+import StoreProvider from "@/lib/redux/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,9 @@ export default function RootLayout({ children }: PropsTypes) {
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-hidden`}>
-        <AntdRegistry>{children}</AntdRegistry>
+        <StoreProvider>
+          <AntdRegistry>{children}</AntdRegistry>
+        </StoreProvider>
       </body>
     </html>
   );

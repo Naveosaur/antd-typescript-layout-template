@@ -1,15 +1,40 @@
 "use client";
 
-import { Button, Form, Input } from "antd";
+import http from "@/utils/AxiosInstance";
+import { Button, Form, Input, message } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import Cookies from "js-cookie";
+import { encrypt } from "@/utils/Cryptograph";
 const FormLogin = () => {
   const router = useRouter();
+
   // On Finish Form
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
-    router.push("/dashboard");
+  const onFinish = async (values: any) => {
+    try {
+      const res = await http.post("/auth/signIn", {
+        email: values.username,
+        password: values.password,
+      });
+
+      if (res.status === 200) {
+        console.log("ORIGINAL TOKEN", res.data.data.TOKEN);
+        console.log("ENCRYPTED TOKEN", res.data.data.TOKEN);
+        Cookies.set("token", encrypt(res.data.data.TOKEN));
+        Cookies.set("user", JSON.stringify(res.data.data));
+        router.push("/dashboard");
+        message.success("Login Success");
+        setTimeout(() => {
+          message.destroy();
+        }, 1000);
+      }
+    } catch (error) {
+      console.log(error);
+      message.error("Login Failed");
+      setTimeout(() => {
+        message.destroy();
+      }, 5000);
+    }
   };
 
   return (
