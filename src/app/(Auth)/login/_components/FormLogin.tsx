@@ -18,8 +18,6 @@ const FormLogin = () => {
       });
 
       if (res.status === 200) {
-        console.log("ORIGINAL TOKEN", res.data.data.TOKEN);
-        console.log("ENCRYPTED TOKEN", res.data.data.TOKEN);
         Cookies.set("token", encrypt(res.data.data.TOKEN));
         Cookies.set("user", JSON.stringify(res.data.data));
         router.push("/dashboard");
