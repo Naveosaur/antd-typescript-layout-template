@@ -1,30 +1,27 @@
 "use client";
 
-import { BellFilled, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { BellFilled } from "@ant-design/icons";
 import Avatar from "antd/es/avatar/avatar";
 import { Header } from "antd/es/layout/layout";
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import ProfileDrawer from "./ProfileDrawer";
+import NotificationDrawer from "./NotificationDrawer";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/Store";
+import { setOpenNotification, setOpenProfile } from "@/lib/redux/slice/Drawer.Slice";
 
 const AppNavbar = () => {
-  // const dispatch = useDispatch();
-  // const collapsed = useSelector((state: any) => state.sider.collapsed);
+  const dispatch = useAppDispatch();
+
   return (
-    <Header className="!bg-primary flex flex-row justify-between items-center">
-      <Link href="/">
-        <Image src="/fps-icon-white.svg" alt="logo" width={100} height={42} />
-      </Link>
-      <Button className="!hidden" type="primary" onClick={() => {}}>
-        <MenuUnfoldOutlined />
-        <MenuUnfoldOutlined />
-      </Button>
-      <div className="flex flex-row items-center gap-5 text-2xl text-white">
-        <BellFilled />
-        <p className="text-lg">Admin</p>
-        <Avatar size={40} alt="avatar" src="" />
+    <Header className="flex flex-row justify-end" style={{ background: "white" }}>
+      <div className="flex flex-row items-center gap-5 text-2xl text-gray-500">
+        <BellFilled className="hover:scale-110 hover:shadow-md hover:cursor-pointer" onClick={() => dispatch(setOpenNotification(true))} />
+        <Avatar size={35} alt="avatar" src="" className="hover:scale-110 hover:shadow-md hover:cursor-pointer" onClick={() => dispatch(setOpenProfile(true))} />
       </div>
+
+      {/* Drawer */}
+      <ProfileDrawer />
+      <NotificationDrawer />
     </Header>
   );
 };

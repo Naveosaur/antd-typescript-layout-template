@@ -1,39 +1,56 @@
-import { Menu, MenuProps } from "antd";
+"use client";
+
+import { useAppSelector } from "@/lib/redux/Store";
+import { RightCircleFilled } from "@ant-design/icons";
+import { Button, Menu, MenuProps } from "antd";
 import Sider from "antd/es/layout/Sider";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
+// Menu items
 type MenuItem = Required<MenuProps>["items"][number];
 
 const MenuItems: MenuItem[] = [
   {
     key: "1",
     icon: "",
-    label: (
-      <Link href="/dashboard" className="text-white">
-        Dashboard
-      </Link>
-    ),
+    label: "Dashboard",
   },
-  { key: "2", icon: "", label: <Link href="/reconciliation">Reconciliation</Link> },
-  { key: "3", icon: "", label: <Link href="/report">Report</Link> },
+  { key: "2", icon: "", label: "Menu 2" },
+  { key: "3", icon: "", label: "Menu 3" },
   {
     key: "Sub1",
     label: "Settings",
     icon: "",
     children: [
-      { key: "5", label: <Link href="/settings/project">Project</Link> },
-      { key: "6", label: <Link href="/settings/schedule-process">Schedule Process</Link> },
+      { key: "5", label: "Settings 1" },
+      { key: "6", label: "Settings 2" },
     ],
   },
 ];
 
+// Handle Menu Click
+const handleMenuClick = (e: any) => {
+  console.log("click ", e);
+};
+
 const AppSidebar = () => {
-  // const collapsed = useSelector((state: any) => state.sider.collapsed);
+  const authState = useAppSelector((state) => state.auth);
+  console.log(authState);
 
   return (
-    <Sider className="!bg-primary">
-      <Menu className="!bg-primary" style={{ marginTop: "15px", fontSize: "16px" }} mode="inline" defaultSelectedKeys={["4"]} items={MenuItems} />
+    <Sider className="" width={250} collapsible={true}>
+      {/* <div className="absolute top-[20px] left-[175px] z-10 bg-red-500">Button</div> */}
+      {/* <RightCircleFilled className="absolute top-[25px] left-[235px] z-10 text-black" style={{ fontSize: "25px", color: "white" }} /> */}
+
+      <div className="flex justify-center m-5 overflow-hidden relative">
+        <Link href="/">
+          <Image src="/fps-icon-white.svg" alt="logo" width={100} height={42} />
+        </Link>
+      </div>
+
+      <Menu className="!bg-inherit !mt-5" mode="inline" items={MenuItems} onClick={handleMenuClick} />
     </Sider>
   );
 };

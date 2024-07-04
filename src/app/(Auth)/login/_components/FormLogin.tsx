@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { encrypt } from "@/utils/Cryptograph";
+import { setLocaltorage } from "@/utils/UseLocalStorage";
 const FormLogin = () => {
   const router = useRouter();
 
@@ -20,18 +21,20 @@ const FormLogin = () => {
       if (res.status === 200) {
         Cookies.set("token", encrypt(res.data.data.TOKEN));
         Cookies.set("user", JSON.stringify(res.data.data));
+        setLocaltorage("token", encrypt(res.data.data.TOKEN));
+        setLocaltorage("user", res.data.data);
+
         router.push("/dashboard");
         message.success("Login Success");
         setTimeout(() => {
           message.destroy();
-        }, 1000);
+        }, 3000);
       }
     } catch (error) {
-      console.log(error);
       message.error("Login Failed");
       setTimeout(() => {
         message.destroy();
-      }, 5000);
+      }, 3000);
     }
   };
 

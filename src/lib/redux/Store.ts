@@ -1,16 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CounterSlice, { counterSlice } from "./Slices/Counter.Slice";
+import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
+import { authReducer } from "./slice/Auth.Slice";
+import { drawerReducer } from "./slice/Drawer.Slice";
 
-export const makeStore = () => {
-  return configureStore({
-    reducer: {
-      counter: CounterSlice,
-    },
-  });
-};
+export const store = configureStore({
+  reducer: { auth: authReducer, drawer: drawerReducer },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+});
 
-// Infer the type of makeStore
-export type AppStore = ReturnType<typeof makeStore>;
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore["getState"]>;
-export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
+
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

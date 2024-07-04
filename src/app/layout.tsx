@@ -1,13 +1,12 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-// import ReduxProvider from "@/lib/redux/ReduxProvider";
-import StoreProvider from "@/lib/redux/Provider";
+import ReduxProvider from "@/lib/redux/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Reconciliation",
+  title: "Project Name",
   description: "",
 };
 
@@ -19,9 +18,9 @@ export default function RootLayout({ children }: PropsTypes) {
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-hidden`}>
-        <StoreProvider>
+        <ReduxProvider>
           <AntdRegistry>{children}</AntdRegistry>
-        </StoreProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
