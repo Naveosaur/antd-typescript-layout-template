@@ -1,11 +1,14 @@
 "use client";
 
+import { LeftCircleFilled, RightCircleFilled } from "@ant-design/icons";
 import "./AppSidebar.Style.css";
 import { Menu, MenuProps } from "antd";
 import Sider from "antd/es/layout/Sider";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/Store";
+import { toggleSidebar } from "@/lib/redux/slice/TriggerUI.Slice";
 
 // Menu items
 type MenuItem = Required<MenuProps>["items"][number];
@@ -35,11 +38,24 @@ const handleMenuClick = (e: any) => {
 };
 
 const AppSidebar = () => {
-  return (
-    <Sider className="" width={250} collapsible={true}>
-      {/* <div className="absolute top-[20px] left-[175px] z-10 bg-red-500">Button</div> */}
-      {/* <RightCircleFilled className="absolute top-[25px] left-[235px] z-10 text-black" style={{ fontSize: "25px", color: "white" }} /> */}
+  const isCollapse = useAppSelector((state) => state.triggerUI.toggleSidebar);
+  const dispatch = useAppDispatch();
 
+  return (
+    <Sider className="" width={250} collapsible>
+      {/* {isCollapse ? (
+        <RightCircleFilled
+          className={`absolute top-[25px] left-[65px] z-10 text-black border transition-transform duration-300 ${isCollapse ? "rotate-180" : ""}`}
+          style={{ fontSize: "25px", color: "white" }}
+          onClick={() => dispatch(toggleSidebar(false))}
+        />
+      ) : (
+        <LeftCircleFilled
+          className={`absolute top-[25px] left-[235px] z-10 text-black border transition-transform duration-300 ${isCollapse ? "" : "rotate-180"}`}
+          style={{ fontSize: "25px", color: "white" }}
+          onClick={() => dispatch(toggleSidebar(true))}
+        />
+      )} */}
       <div className="flex justify-center m-5 overflow-hidden relative">
         <Link href="/">
           <Image src="/fps-icon-white.svg" alt="logo" width={100} height={42} />

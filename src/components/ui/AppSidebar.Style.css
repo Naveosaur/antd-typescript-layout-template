@@ -23,3 +23,11 @@
 .ant-menu-title-content {
   color: white !important;
 }
+
+.ant-menu-submenu-title {
+  color: gray !important;
+}
+
+.ant-menu-submenu-selected {
+  background-color: #1890ff !important;
+}
