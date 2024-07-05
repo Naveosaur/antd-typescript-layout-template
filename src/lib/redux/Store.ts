@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, TypedUseSelectorHook, useSelector } from "react-redux";
 import { authReducer } from "./slice/Auth.Slice";
-import { drawerReducer } from "./slice/Drawer.Slice";
+import { triggerUIReducer } from "./slice/TriggerUI.Slice";
 
 export const store = configureStore({
-  reducer: { auth: authReducer, drawer: drawerReducer },
+  reducer: { auth: authReducer, triggerUI: triggerUIReducer },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
 });
 
