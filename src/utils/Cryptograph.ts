@@ -9,7 +9,6 @@ export function encrypt(text: string): string {
   let encrypted = cipher.update(text, "utf8", "hex");
   encrypted += cipher.final("hex");
 
-  console.log("Encrypted", encrypted);
   return `${iv.toString("hex")}:${encrypted}`; // Include the IV with the encrypted text
 }
 
@@ -19,6 +18,5 @@ export function decrypt(encryptedText: string): string {
   const decipher = crypto.createDecipheriv(algorithm, key, iv);
   let decrypted = decipher.update(encrypted, "hex", "utf8");
   decrypted += decipher.final("utf8");
-  console.log("Decrypted", decrypted);
   return decrypted;
 }

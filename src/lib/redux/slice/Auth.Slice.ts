@@ -2,10 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 type AuthStateType = {
   isLogin: boolean;
+  userCreds?: {};
+  token?: string;
 };
 
 const initialState: AuthStateType = {
   isLogin: false,
+  userCreds: undefined,
+  token: undefined,
 };
 
 export const authSlice = createSlice({
@@ -13,7 +17,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthState: (state, action) => {
-      state.isLogin = action.payload;
+      state.isLogin = action.payload.isLogin;
     },
   },
 });

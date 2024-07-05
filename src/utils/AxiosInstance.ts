@@ -20,6 +20,7 @@ http.interceptors.request.use(
     // let token = getLocalStorage("token");
     if (token) {
       const decryptedToken = decrypt(token);
+      console.log(decryptedToken);
       config.headers["Authorization"] = "Bearer " + decryptedToken;
       return config;
     }
