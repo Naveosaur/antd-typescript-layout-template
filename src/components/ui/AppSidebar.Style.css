@@ -1,0 +1,25 @@
+/* AppSidebar.Style.css */
+
+/* Change background color of all menus */
+
+/* Change text color of all menu items */
+
+.ant-menu-item-selected {
+  background-color: #1890ff !important;
+}
+
+.ant-menu-item {
+  color: gray !important;
+}
+
+.ant-menu-sub {
+  color: gray !important;
+}
+
+.ant-menu-submenu-arrow {
+  color: white !important;
+}
+
+.ant-menu-title-content {
+  color: white !important;
+}

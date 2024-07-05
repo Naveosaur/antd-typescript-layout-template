@@ -1,8 +1,7 @@
 "use client";
 
-import { useAppSelector } from "@/lib/redux/Store";
-import { RightCircleFilled } from "@ant-design/icons";
-import { Button, Menu, MenuProps } from "antd";
+import "./AppSidebar.Style.css";
+import { Menu, MenuProps } from "antd";
 import Sider from "antd/es/layout/Sider";
 import Image from "next/image";
 import Link from "next/link";
@@ -36,9 +35,6 @@ const handleMenuClick = (e: any) => {
 };
 
 const AppSidebar = () => {
-  const authState = useAppSelector((state) => state.auth);
-  console.log(authState);
-
   return (
     <Sider className="" width={250} collapsible={true}>
       {/* <div className="absolute top-[20px] left-[175px] z-10 bg-red-500">Button</div> */}
@@ -50,7 +46,7 @@ const AppSidebar = () => {
         </Link>
       </div>
 
-      <Menu className="!bg-inherit !mt-5" mode="inline" items={MenuItems} onClick={handleMenuClick} />
+      <Menu className="!bg-inherit !mt-5 text-white" style={{}} mode="inline" items={MenuItems} onClick={handleMenuClick} />
     </Sider>
   );
 };
