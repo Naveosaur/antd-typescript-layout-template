@@ -1,6 +1,5 @@
-import Navbar from "@/components/ui/AppNavbar";
-import Sidebar from "@/components/ui/AppSidebar";
-import ReduxProvider from "@/lib/redux/ReduxProvider";
+import Navbar from "@/components/layouts/AppNavbar";
+import Sidebar from "@/components/layouts/AppSidebar";
 import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";
 import React from "react";
