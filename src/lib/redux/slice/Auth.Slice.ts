@@ -17,7 +17,10 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setAuthState: (state, action) => {
+      console.log("action", action.payload);
       state.isLogin = action.payload.isLogin;
+      state.userCreds = action.payload.userCreds;
+      state.token = action.payload.token;
     },
   },
 });

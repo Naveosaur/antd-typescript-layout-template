@@ -1,11 +1,10 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { decrypt } from "./Cryptograph";
-import { removeLocalStorage } from "./UseLocalStorage";
-import { get } from "http";
+import { getLocalStorage, removeLocalStorage } from "./UseLocalStorage";
 
 // To DO: Change the baseURL with your API URL from environment variable
-const baseURL = "https://klinik.4netps.co.id/hospital-endpoint/";
+const baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 const http = axios.create({
   baseURL,
@@ -20,7 +19,6 @@ http.interceptors.request.use(
     // let token = getLocalStorage("token");
     if (token) {
       const decryptedToken = decrypt(token);
-      console.log(decryptedToken);
       config.headers["Authorization"] = "Bearer " + decryptedToken;
       return config;
     }
@@ -36,8 +34,8 @@ http.interceptors.response.use(undefined, async (error) => {
   const originalRequest = error.config;
 
   if (error.response === 401 && !originalRequest._retry) {
-    Cookies.remove("token");
-    Cookies.remove("user");
+    // Cookies.remove("token");
+    // Cookies.remove("user");
     removeLocalStorage("user");
     removeLocalStorage("token");
   } else {

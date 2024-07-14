@@ -8,6 +8,7 @@ const DumbComponent = () => {
     console.log("get Data Running");
     try {
       const res = await http.get("steps?hospital_id=6");
+      console.log("Get Data RUnning");
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -16,6 +17,7 @@ const DumbComponent = () => {
 
   useEffect(() => {
     getData();
+    console.log("useEffect Running");
   }, []);
 
   return <div>dumb</div>;

@@ -8,29 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/Store";
-import { toggleSidebar } from "@/lib/redux/slice/TriggerUI.Slice";
-
-// Menu items
-type MenuItem = Required<MenuProps>["items"][number];
-
-const MenuItems: MenuItem[] = [
-  {
-    key: "1",
-    icon: "",
-    label: "Dashboard",
-  },
-  { key: "2", icon: "", label: "Menu 2" },
-  { key: "3", icon: "", label: "Menu 3" },
-  {
-    key: "Sub1",
-    label: "Settings",
-    icon: "",
-    children: [
-      { key: "5", label: "Settings 1" },
-      { key: "6", label: "Settings 2" },
-    ],
-  },
-];
+import { MenuItems } from "@/lib/SidebarMenuItems";
 
 // Handle Menu Click
 const handleMenuClick = (e: any) => {
