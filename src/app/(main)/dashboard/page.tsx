@@ -7,7 +7,72 @@ type DashboardProps = {
 
 const Dashboard = async ({ children }: DashboardProps) => {
   return (
-    <div>
+    <div className="h-[150vh">
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
+      <DumbComponent />
       <DumbComponent />
     </div>
   );
