@@ -17,7 +17,7 @@ type PropsTypes = {
 export default function RootLayout({ children }: PropsTypes) {
   return (
     <html lang="en">
-      <body className={`${inter.className} overflow-hidden`}>
+      <body className={`${inter.className} overflow-y-auto`}>
         <ReduxProvider>
           <AntdRegistry>{children}</AntdRegistry>
         </ReduxProvider>
