@@ -34,8 +34,8 @@ http.interceptors.response.use(undefined, async (error) => {
   const originalRequest = error.config;
 
   if (error.response === 401 && !originalRequest._retry) {
-    // Cookies.remove("token");
-    // Cookies.remove("user");
+    Cookies.remove("token");
+    Cookies.remove("user");
     removeLocalStorage("user");
     removeLocalStorage("token");
   } else {
