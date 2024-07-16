@@ -1,8 +1,12 @@
-/* AppSidebar.Style.css */
+.ant-menu-item-group-title {
+  color: gray !important;
+}
 
-/* Change background color of all menus */
-
-/* Change text color of all menu items */
+@media only screen and (max-width: 768px) {
+  .ant-menu-item-group-title {
+    display: none;
+  }
+}
 
 .ant-menu-item-selected {
   background-color: #1890ff !important;
@@ -28,6 +32,6 @@
   color: gray !important;
 }
 
-.ant-menu-submenu-selected {
-  background-color: #1890ff !important;
-}
+/* .ant-menu-submenu-selected {
+  background-color: !important;
+} */

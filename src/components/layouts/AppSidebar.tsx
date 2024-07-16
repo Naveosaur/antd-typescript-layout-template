@@ -20,7 +20,7 @@ const AppSidebar = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <Sider className="" width={250} collapsible>
+    <Sider className="" width={250} collapsible style={{ overflow: "auto", height: "100vh", position: "sticky", top: 0, left: 0 }}>
       {/* {isCollapse ? (
         <RightCircleFilled
           className={`absolute top-[25px] left-[65px] z-10 text-black border transition-transform duration-300 ${isCollapse ? "rotate-180" : ""}`}
