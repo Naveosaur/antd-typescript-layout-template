@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { encrypt } from "@/utils/Cryptograph";
 import { useState } from "react";
-import { setAuthState } from "@/lib/redux/slice/Auth.Slice";
+import { setLogin } from "@/lib/redux/slice/Auth.Slice";
 import { useAppDispatch } from "@/lib/redux/Store";
 import { showErrorMessage, showSuccessMessage } from "@/components/showMessage";
 import Cookies from "js-cookie";
@@ -32,7 +32,7 @@ const FormLogin = () => {
         Cookies.set("user", JSON.stringify(res.data.data));
 
         dispatch(
-          setAuthState({
+          setLogin({
             isLogin: true,
             token: encrypt(res.data.data.TOKEN),
             userCreds: res.data.data,
