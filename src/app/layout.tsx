@@ -1,20 +1,21 @@
-import "./globals.css";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "./globals.css";
 import ReduxProvider from "@/lib/redux/ReduxProvider";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Project Name",
   description: "",
 };
 
-type PropsTypes = {
-  readonly children: React.ReactNode;
-};
-
-export default function RootLayout({ children }: PropsTypes) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
       <body className={`${inter.className} overflow-y-auto`}>

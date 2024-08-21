@@ -5,11 +5,11 @@ import Avatar from "antd/es/avatar/avatar";
 import { Header } from "antd/es/layout/layout";
 import ProfileDrawer from "./ProfileDrawer";
 import NotificationDrawer from "./NotificationDrawer";
-import { useAppDispatch } from "@/lib/redux/Store";
 import { toggleNotif, toggleProfile } from "@/lib/redux/slice/TriggerUI.Slice";
 import { useEffect, useState } from "react";
+import { useAppDispatch } from "@/lib/redux/useRedux";
 
-const AppNavbar = () => {
+const AppHeader = () => {
   const dispatch = useAppDispatch();
   const [bgStyle, setBgStyle] = useState({
     background: "rgba(255, 255, 255, 0.6)",
@@ -40,10 +40,22 @@ const AppNavbar = () => {
   }, []);
 
   return (
-    <Header className="flex flex-row justify-end" style={{ position: "sticky", top: 0, zIndex: 1, ...bgStyle }}>
+    <Header
+      className="flex flex-row justify-end"
+      style={{ position: "sticky", top: 0, zIndex: 1, ...bgStyle }}
+    >
       <div className="flex flex-row items-center gap-5 text-2xl text-gray-500">
-        <BellFilled className="hover:scale-110 hover:shadow-md hover:cursor-pointer" onClick={() => dispatch(toggleNotif(true))} />
-        <Avatar size={35} alt="avatar" src="" className="hover:scale-110 hover:shadow-md hover:cursor-pointer" onClick={() => dispatch(toggleProfile(true))} />
+        <BellFilled
+          className="hover:scale-110 hover:shadow-md hover:cursor-pointer"
+          onClick={() => dispatch(toggleNotif(true))}
+        />
+        <Avatar
+          size={35}
+          alt="avatar"
+          src=""
+          className="hover:scale-110 hover:shadow-md hover:cursor-pointer"
+          onClick={() => dispatch(toggleProfile(true))}
+        />
       </div>
 
       {/* Drawer */}
@@ -53,4 +65,4 @@ const AppNavbar = () => {
   );
 };
 
-export default AppNavbar;
+export default AppHeader;

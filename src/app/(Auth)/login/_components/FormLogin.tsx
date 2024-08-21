@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import { encrypt } from "@/utils/Cryptograph";
 import { useState } from "react";
 import { setLogin } from "@/lib/redux/slice/Auth.Slice";
-import { useAppDispatch } from "@/lib/redux/Store";
-import { showErrorMessage, showSuccessMessage } from "@/components/showMessage";
 import Cookies from "js-cookie";
+import { useAppDispatch } from "@/lib/redux/useRedux";
+import { showErrorMessage, showSuccessMessage } from "@/components/ui/ShowMessage";
 
 const FormLogin = () => {
   const router = useRouter();
@@ -52,10 +52,16 @@ const FormLogin = () => {
 
   return (
     <Form name="LoginForm" onFinish={onFinish}>
-      <Form.Item name="username" rules={[{ required: true, message: "Please input your username!" }]}>
+      <Form.Item
+        name="username"
+        rules={[{ required: true, message: "Please input your username!" }]}
+      >
         <Input size="large" placeholder="Username / Email" />
       </Form.Item>
-      <Form.Item name="password" rules={[{ required: true, message: "Please input your password!" }]}>
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: "Please input your password!" }]}
+      >
         <Input.Password size="large" placeholder="Password" />
       </Form.Item>
       <div className="flex justify-end mb-5">

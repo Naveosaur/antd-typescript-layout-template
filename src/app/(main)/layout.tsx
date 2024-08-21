@@ -1,4 +1,4 @@
-import Navbar from "@/components/layouts/AppNavbar";
+import Navbar from "@/components/layouts/AppHeader";
 import Sidebar from "@/components/layouts/AppSidebar";
 import { Layout } from "antd";
 import { Content } from "antd/es/layout/layout";

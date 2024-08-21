@@ -22,7 +22,7 @@ http.interceptors.request.use(
       config.headers["Authorization"] = "Bearer " + decryptedToken;
       return config;
     }
-
+    
     return config;
   },
   (error) => {
